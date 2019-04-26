@@ -1,5 +1,5 @@
 <p align='center'>
-	<img src="logo.png" alt="logo" width="200" height="250"/>
+	<img src="logo.png" alt="logo" width="300" height="375"/>
 </p>
 
 # eluent
@@ -16,17 +16,17 @@ This section gives a brief outline of how to use our package. A full code exampl
 Eluent expects user input data in the following format:
 ```
  DATA_ROOT
- ├── UID1
- │   ├── FEAT1.json
- │   ├── FEAT2.json
+ ├── UID_1
+ │   ├── FEAT_1.json
+ │   ├── FEAT_2.json
  │  ...
- │   └── FEATN.json
- ├── UID2
- │   ├── FEAT1.json
- │   ├── FEAT2.json
+ │   └── FEAT_N.json
+ ├── UID_2
+ │   ├── FEAT_1.json
+ │   ├── FEAT_2.json
  │  ...
- │   └── FEATN.json
- ├── UID3
+ │   └── FEAT_N.json
+ ├── UID_3
 ... 
 ```
 `DATA_ROOT` is user specifiable in `eluent/dataset.py`. Each `UID` must be a unique string and feature names must be consistent across users. 
@@ -34,18 +34,18 @@ Eluent expects user input data in the following format:
 Each JSON file should be structured as
 ```
 {
-	"timestamp": 		# start of session (Unix time)
-    "sampling_rate": 	# sensor sampling rate in ms
-    "data": [...] 		# an array of sensor data sampled every sampling_rate
+	"timestamp": 			# start of session (Unix time)
+    "sampling_rate": 		# sensor sampling rate in ms
+    "data": [...] 			# an array of sensor data sampled every sampling_rate
 }
 ```
 Asynchronously sampled data (e.g. Juptyer notebook events) can alternatively be represented as
 ```
 {
     "data": {			
-    	"t": [...]		# array of time values (Unix time)
-    	"y": [...]		# array of sample values
-    }					# --> value y[i] was sampled at time t[i]
+    	"t": [...]			# array of time values (Unix time)
+    	"y": [...]			# array of sample values
+    }						# --> value y[i] was sampled at time t[i]
 }
 ```
 
@@ -102,8 +102,9 @@ chromatogram.render(smoothing_window=3, segment_on='freqs', reorder_colors=True)
 #### Statistics & Analysis
 The Chromatogram object supports the following methods for codeword analysis. 
 
+
 | Function Name | Output |
-| --- | --- | --- |
+| :--- | :--- |
 | `get_length_stats` | dict from codeword number to (mean bandwidth, bandwidth stddev) |
 | `get_codeword_length_distribution` | dict from codeword number to raw list of all bandwidth lengths |
 | `get_lengths_per_user` | dict from user to dict of raw bandwidth lengths per codeword |
