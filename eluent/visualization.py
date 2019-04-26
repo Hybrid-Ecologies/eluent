@@ -74,7 +74,6 @@ def plot_chromatogram(cgram, users):
     font = font_manager.FontProperties(family='CMU Bright',
                                    weight='bold', size=20)
     plt.legend(handles=patches, bbox_to_anchor=(1.01, 1), loc=2, borderaxespad=0., borderpad=0, frameon=False, prop=font)
-    # plt.savefig('/Users/mjoerke/Desktop/jup_cgram.png', dpi=300, transparent=True, bbox_inches = "tight")
     plt.show()
 
 JUP_LABELS = {
@@ -143,22 +142,9 @@ def vis_codewords(codebook):
             elif title=='jupyter':
                 ax.set_xticks([0, 12, 24, 36, 48])
                 ax.set_xticklabels([0, 2, 4, 6, 8])
-                # ax.set_xlabel("Seconds", name='CMU Bright', size=15, weight='bold')
             elif title=='kinnunen':
                 ax.set_xticks(list(range(10)))
 
-            # if j == 0:
-                # ax.set_title("Codeword {}".format(i), name='CMU Bright', size=20, weight='bold', y=1.05)
-
-            # if (i-1) % cols == 0:
-            #     label = codebook.mts.features[j]
-            #     if title == 'jupyter':
-            #         label = JUP_LABELS[label]
-            #     elif title =='kinnunen':
-            #         label = KIN_LABELS[label]
-
-                # ax.set_ylabel(label, name='CMU Bright', size=15, weight='bold')
-            # else:
             plt.setp(ax.get_yticklabels(), visible=False)
             
             x_smooth = gaussian_filter1d(x, sigma=0.75)
@@ -175,8 +161,6 @@ def vis_codewords(codebook):
                 plt.setp(ax.get_xticklabels(), name='CMU Bright', size=22);
             fig.add_subplot(ax)
 
-    plt.savefig('/Users/mjoerke/Desktop/jup_codebook.png', dpi=300, transparent=True, bbox_inches = "tight")
-
 def plot_user(cgram, user, sigma, ylim=None):
     sns.reset_orig()
 
@@ -190,7 +174,7 @@ def plot_user(cgram, user, sigma, ylim=None):
 
     plt.figure(figsize=(20, 2.*F))
     t = cgram.mts.feat_class
-    # plt.suptitle("User {} {} Chromatogram".format(user, t.title()), name='CMU Bright', size=30, weight='bold', y=1.02)
+    plt.suptitle("User {} {} Chromatogram".format(user, t.title()), name='CMU Bright', size=30, weight='bold', y=1.02)
 
     plt.subplots_adjust(hspace=0.4)
     plt.margins(0)
@@ -201,8 +185,6 @@ def plot_user(cgram, user, sigma, ylim=None):
 
         axs.append(ax)
         ax.set_xlim(0, B-1)
-        # ax.set_ylim(-3, 3)
-        # ax.set_yticks([-1.5, 0, 1.5, 3])
         x_raw = cgram.mts[user][i][:B]
 
         if type(sigma) is list:
@@ -262,8 +244,6 @@ def plot_user(cgram, user, sigma, ylim=None):
             ax.axvspan(start, stop, 
                        facecolor=colors[cw], edgecolor=None, alpha=0.7)
         
-    plt.savefig('/Users/mjoerke/Desktop/614_emotion.png', dpi=300, transparent=True, bbox_inches = "tight")
-
 def plot_freq_diff(cgram):
     sns.set_style('whitegrid')
     fig = plt.figure(figsize=(8, 4.5))
@@ -294,6 +274,7 @@ def plot_freq_diff(cgram):
     plt.setp(ax.get_xticklabels(), name='CMU Bright', size=14, weight='bold')
     plt.setp(ax.get_yticklabels(), name='CMU Bright', size=14, weight='bold');
 
+# adapted from https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/
 def fancy_dendrogram(*args, **kwargs):
     max_d = kwargs.pop('max_d', None)
     if max_d and 'color_threshold' not in kwargs:

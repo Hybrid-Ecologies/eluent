@@ -3,7 +3,7 @@
 </p>
 
 # eluent
-A tool for conducting hybrid microgenetic analysis with sensor data. Eluent consists of a Python package for data analysis & processing and a Ruby web app interface for post-study qualitative analysis. Eluent accompanies our paper
+A tool for conducting hybrid microgenetic analysis with sensor data. Eluent consists of a Python package for data analysis and processing and a Ruby web app interface for post-study qualitative analysis. Eluent accompanies our paper:
 > Cesar Torres, Matthew Jörke, Emily Hill, Eric Paulos. [Hybrid Microgenetic Analysis: Using Activity Codebooks toIdentify and Characterize Creative Process](link), *Creativity & Cognition 2019*. 
 
 Please refer to the paper for further technical details. 
@@ -36,7 +36,7 @@ Each JSON file should be structured as
 {
     "timestamp":            # start of session (Unix time)
     "sampling_rate":        # sensor sampling rate in ms
-    "data": [...]           # an array of sensor data sampled every sampling_rate
+    "data": [...]           # an array of sensor data sampled @ sampling_rate
 }
 ```
 Asynchronously sampled data (e.g. Juptyer notebook events) can alternatively be represented as
@@ -50,12 +50,12 @@ Asynchronously sampled data (e.g. Juptyer notebook events) can alternatively be 
 ```
 
 ### MTS Matrix Construction
-MTS matrix tools are contained in the `MTS` object. Properly formatted input data can be automatically read, time-aligned, normalized, and sampled into windows of size *L*. 
+MTS matrix tools are contained in the `MTS` object within the `dataset` module. Properly formatted input data can be automatically read, time-aligned, normalized, and sampled into windows of size *L*. 
 
 ```
-mts = dataset.MTS(users, 'jupyter') # construct MTS matrix for juptyer features
-L = mts.time2L(8) # determine the window size using the sampling frequency
-mts.extract_samples(L, normalize=True); # extract samples and perform per sample normalization
+mts = dataset.MTS(users, 'jupyter')     # construct MTS matrix for juptyer features
+L = mts.time2L(8)                       # determine the window size using the sampling frequency
+mts.extract_samples(L, normalize=True)  # extract samples and perform per sample normalization
 ```
 
 ### Activity Segmentation Algorithm
@@ -68,14 +68,14 @@ codebook = activity.Codebook(mts)
 ```
 
 #### (1) Distillation
-The distillation phase uses an adaptive greedy centers algorithm to reduce the size of the dataset. The `cull_threshold` (ε) controls how many samples are discarded at every step; a higher cull threshold produces fewer samples.
+The distillation phase uses an adaptive greedy centers algorithm to reduce the size of the dataset. The `cull_threshold` ε controls how many samples are discarded at every step; a higher cull threshold produces fewer samples.
 ```
 codebook.distill(cull_threshold=10)
 ```
 After subsampling, the resulting pruned dataset is hierarchically clustered. This operation is computationally intensive: the cull threshold should be set such that approx. 1000 samples are found. 
 
 #### (2) Extraction
-The exatraction phase identifies *K* maximially distinctive codewords by pruning the dendrogram at the *k*-th level. 
+The exatraction phase identifies *K* maximially distinctive codewords by pruning the dendrogram at the *K*-th level. 
 ```
 codebook.extract(K=5)
 ```
@@ -89,7 +89,7 @@ chromatogram = codebook.apply()
 ### Chromatogram Analysis
 
 #### Rendering
-To generate the full chromatogram, the object must first be *rendered*: rendering applies window smoothing, clusters users based on a given statistic, and recolors the chromatogram based on clustering statistics.
+To generate and visualize the full chromatogram, the chromatogram object must first be *rendered*: rendering applies window smoothing, clusters users based on a given statistic, and recolors the chromatogram based on clustering statistics.
 ```
 chromatogram.render(smoothing_window=3, segment_on='freqs', reorder_colors=True)
 ```
@@ -104,7 +104,6 @@ chromatogram.render(smoothing_window=3, segment_on='freqs', reorder_colors=True)
 #### Statistics & Analysis
 The Chromatogram object supports the following methods for codeword analysis. 
 
-
 | Function Name | Output |
 | :--- | :--- |
 | `get_length_stats` | dict from codeword number to (mean bandwidth, bandwidth stddev) |
@@ -115,10 +114,10 @@ The Chromatogram object supports the following methods for codeword analysis.
 
 
 ### Exporting
-To export the chromatogram for use in the qualitative analysis web app, time-tracked VTT (subtitle) files are generated for each user's screen capture. 
+The qualitative analysis interface is able to annotate each user's screen capture with the current codeword. To export codeword data for each user, time-tracked VTT (subtitle) files can be generated for each user. 
 ```
 save_path = 'vtt'
-prefix = 'jupyter
+prefix = 'jupyter'
 dataset.save_subtitles(save_path, chromatogram, prefix)
 ```
 
@@ -132,7 +131,7 @@ The following methods are supported:
 - (in development) `Chromatogram.plot_bandwidth_diff()`
 - (in development) `Chromatogram.plot_markov_diff()`
 
-See the Jupyter notebook `example.py` for examples of each method. 
+See the Jupyter notebook `example.py` for examples of each visualization method. 
 
 Note that all visualizations use the open source [CMU Bright](https://ctan.org/pkg/cm-unicode?lang=en) font. 
 
