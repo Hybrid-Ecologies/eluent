@@ -1,5 +1,5 @@
 <p align='center'>
-	<img src="logo.png" alt="logo" width="300" height="375"/>
+    <img src="logo.png" alt="logo" width="300" height="375"/>
 </p>
 
 # eluent
@@ -34,18 +34,18 @@ Eluent expects user input data in the following format:
 Each JSON file should be structured as
 ```
 {
-	"timestamp": 			# start of session (Unix time)
-    "sampling_rate": 		# sensor sampling rate in ms
-    "data": [...] 			# an array of sensor data sampled every sampling_rate
+    "timestamp":            # start of session (Unix time)
+    "sampling_rate":        # sensor sampling rate in ms
+    "data": [...]           # an array of sensor data sampled every sampling_rate
 }
 ```
 Asynchronously sampled data (e.g. Juptyer notebook events) can alternatively be represented as
 ```
 {
-    "data": {			
-    	"t": [...]			# array of time values (Unix time)
-    	"y": [...]			# array of sample values
-    }						# --> value y[i] was sampled at time t[i]
+    "data": {           
+        "t": [...]          # array of time values (Unix time)
+        "y": [...]          # array of sample values
+    }                       # --> value y[i] was sampled at time t[i]
 }
 ```
 
@@ -67,26 +67,28 @@ First, we must construct a `Codebook` object from our MTS matrix object.
 codebook = activity.Codebook(mts)
 ```
 
-##### (1) Distillation
+#### (1) Distillation
 The distillation phase uses an adaptive greedy centers algorithm to reduce the size of the dataset. The `cull_threshold` (ε) controls how many samples are discarded at every step; a higher cull threshold produces fewer samples.
 ```
 codebook.distill(cull_threshold=10)
 ```
 After subsampling, the resulting pruned dataset is hierarchically clustered. This operation is computationally intensive: the cull threshold should be set such that approx. 1000 samples are found. 
 
-##### (2) Extraction
+#### (2) Extraction
 The exatraction phase identifies *K* maximially distinctive codewords by pruning the dendrogram at the *k*-th level. 
 ```
 codebook.extract(K=5)
 ```
 
-##### (3) Application
+#### (3) Application
 Finally, the codebook is applied the original MTS matrix, producing a `Chromatogram` object. 
 ```
 chromatogram = codebook.apply()
 ```
 
 ### Chromatogram Analysis
+
+#### Rendering
 To generate the full chromatogram, the object must first be *rendered*: rendering applies window smoothing, clusters users based on a given statistic, and recolors the chromatogram based on clustering statistics.
 ```
 chromatogram.render(smoothing_window=3, segment_on='freqs', reorder_colors=True)
@@ -94,10 +96,10 @@ chromatogram.render(smoothing_window=3, segment_on='freqs', reorder_colors=True)
 
 - `smoothing_window`: controls the kernel size *W* during window smoothing
 - `segment_on`: determines which feature vector η users are segmented on
-	- `freqs`: codeword frequency vector
-	- `logfreqs`: log of codeword frequency vector
-	- `markov`: codeword transition matrix
-	- `width`: bandwidth mean and standard deviations
+    - `freqs`: codeword frequency vector
+    - `logfreqs`: log of codeword frequency vector
+    - `markov`: codeword transition matrix
+    - `width`: bandwidth mean and standard deviations
 
 #### Statistics & Analysis
 The Chromatogram object supports the following methods for codeword analysis. 
@@ -112,7 +114,7 @@ The Chromatogram object supports the following methods for codeword analysis.
 | `get_freqs_per_user` | dict from user to codeword frequency vector | 
 
 
-#### Exporting
+### Exporting
 To export the chromatogram for use in the qualitative analysis web app, time-tracked VTT (subtitle) files are generated for each user's screen capture. 
 ```
 save_path = 'vtt'
