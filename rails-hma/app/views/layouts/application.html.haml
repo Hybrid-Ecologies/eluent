@@ -1,0 +1,112 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    / Standard Meta
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0", :name => "viewport"}
+
+    %title Hybrid Atelier
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+
+    - if params[:controller] != "application"
+      = stylesheet_link_tag params[:controller], media: "all"
+      = javascript_include_tag params[:controller]
+    = csrf_meta_tags
+
+  %body
+    = render :partial => "/layouts/navigation"
+    .ui.container.text
+      = yield
+    .ui.inverted.vertical.footer.segment
+      .ui.center.aligned.container
+        / .ui.inverted.section.divider
+        %p 
+          Copyright © 2009-
+          = Time.new.year 
+          UC Berkeley • Hybrid Ecologies Lab
+        - if false
+          .ui.horizontal.inverted.small.divided.link.list
+            %a.item{:href => "#"} Site Map
+            %a.item{:href => "#"} Contact Us
+            %a.item{:href => "#"} Terms and Conditions
+            %a.item{:href => "#"} Privacy Policy
+
+:coffeescript
+  $ ->
+    # fix main menu to page on passing
+    $('.main.menu').visibility
+      type: 'fixed'
+    $('.overlay').visibility
+      type: 'fixed'
+      offset: 80
+    
+
+   
+    # show dropdown on hover
+    $('.main.menu  .ui.dropdown').dropdown
+      on: 'hover'
+    
+  
+  
+:css
+  body {
+    background-color: #FFFFFF;
+  }
+  .main.container {
+    margin-top: 2em;
+  }
+
+  .main.menu {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    transition:
+      box-shadow 0.5s ease,
+      padding 0.5s ease
+    ;
+  }
+  .main.menu .item img.logo {
+    margin-right: 1.5em;
+    width: 4.5em;
+  }
+
+  .overlay {
+    float: left;
+    margin: 0em 3em 1em 0em;
+  }
+  .overlay .menu {
+    position: relative;
+    left: 0;
+    transition: left 0.5s ease;
+  }
+
+  .main.menu.fixed {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  }
+  .overlay.fixed .menu {
+    left: 800px;
+  }
+
+  .text.container .left.floated.image {
+    margin: 2em 2em 2em -4em;
+  }
+  .text.container .right.floated.image {
+    margin: 2em -4em 2em 2em;
+  }
+  .ui.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  .ui.footer.segment {
+    margin: 3em 0em 0em;
+    padding: 3em 0em;
+  }

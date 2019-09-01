@@ -1,0 +1,31 @@
+
+.ui.borderless.main.menu
+  .ui.text.container
+    .header.item
+      Eluent
+    %a.item{:href => "/", :name => "home"} Home
+    .ui.dropdown.item
+      Qualitative Analysis
+      %i.dropdown.icon
+      .menu
+        = link_to "Analysis Interface", sensing_codebook_path, :class => "item"
+
+:css
+  .navbar{
+    background: #ffc20e;
+    border-color: #ffc20e;
+    border-radius: 0px;
+    font-weight: bold;
+  }
+  .navbar-default .navbar-nav > li > a{
+    color: #111;
+    font-size: 1.1em;
+  }
+  #logo {
+    position: relative;
+    top: -3px;
+  }
+  /* ACTIVE COLOR */
+  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+    background: #ffae0e !important;
+  }

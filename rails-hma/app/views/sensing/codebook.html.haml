@@ -1,0 +1,283 @@
+#metadata{src:"/irb/111/sessionmetadata_111.json"}
+#left-panel.panel
+	.ui.segment#codebook
+		.type CODEBOOKS
+		.ui.bar
+			.left
+				%select.ui.dropdown.tiny#codebook-select
+					%option{value: "/irb/111/emotion_111.vtt"} Emotion
+					%option{value: "/irb/111/jupyter_111.vtt"} Jupyter Interactions
+					%option{value: "/irb/111/kinnunen_111.vtt"} Kinnunen
+					%option{value: "/irb/111/bio_111.vtt"} Bio
+					%option{value: "/irb/111/hr_111.vtt"} Heart Rate
+					%option{value: "/irb/111/phasic_111.vtt"} Phasic EDA Activity
+					%option{value: "/irb/111/q_111.vtt"} Question
+					%option{value: "/irb/111/motion_111.vtt"} Motion
+		.codes.buttons
+		.group
+			.cbook
+				/ %img{src:"/irb/datasets/images/emotion_cbook.png"}
+			.cgram
+				/ %img{src:"/irb/datasets/images/emotion_cgram.png"}
+			.cchar
+				/ %img{src:"/irb/datasets/images/emotion_char.png"}
+
+		.plot
+			.plottitle.chromatogram User Chromatogram
+			.plotarea.paper-plot.chromatimeline
+
+
+	#primary-display.ui.segment.video-display
+		.codebar
+			.codeword
+				.codelabel
+		.ui.bar
+
+			.left
+				%select.ui.dropdown.fluid
+			.right
+				%button.ui.button.remove.gray.icon
+					%i.ui.icon.remove
+
+		.stage
+			%video#main
+				%source{:src => "/irb/111/data/screen_111_opt.mp4", :type => "video/mp4"}
+				%track{:default => "", :kind => "subtitles", :label => "English subtitles", :src => "/irb/111/motion_111.vtt", :srclang => "en"}
+		%h3.ui-widget-header
+		.ui.bar.bottom
+			.ui#controls
+				.ui.buttons.subcontrols.two
+					%button.ui.button.tplay.icon
+						%i.play.icon
+
+					%button.ui.button.icon.toggle-menu.blue
+						%i.icon.move
+				.change.ui.buttons.small.subcontrols
+					%button.ui.button.aspect{name:1.7777777777777777}
+						4:3
+					%button.ui.button.tzoomin.icon
+						%i.icon.plus
+					%button.ui.button.tzoomout.icon
+						%i.icon.minus
+					%button.ui.button.tleft.icon
+						%i.arrow.left.icon
+					%button.ui.button.tright.icon
+						%i.arrow.right.icon
+					%button.ui.button.tup.icon
+						%i.arrow.up.icon
+					%button.ui.button.tdown.icon
+						%i.arrow.down.icon
+					%button.ui.button.trotateleft.icon ↻
+					%button.ui.button.trotateright.icon ↺
+					%button.ui.button.treset.icon reset
+	#secondary-display.ui.segment.video-display
+		.ui.bar
+			.left
+				%select.ui.dropdown.fluid
+			.right
+				%button.ui.button.remove.gray.icon
+					%i.ui.icon.remove
+		.stage
+			%video#secondary
+				%source{:src => "/irb/111/data/screen_111_opt.mp4", :type => "video/mp4"}
+		%h3.ui-widget-header
+		.ui.bar.bottom
+			.ui#controls
+				.ui.buttons.subcontrols.two
+					%button.ui.button.tplay.icon
+						%i.play.icon
+					%button.ui.button.icon.toggle-menu.blue
+						%i.icon.move
+
+				.change.ui.buttons.small.subcontrols
+					%button.ui.button.aspect{name:1.7777777777777777}
+						4:3
+					%button.ui.button.tzoomin.icon
+						%i.icon.plus
+					%button.ui.button.tzoomout.icon
+						%i.icon.minus
+					%button.ui.button.tleft.icon
+						%i.arrow.left.icon
+					%button.ui.button.tright.icon
+						%i.arrow.right.icon
+					%button.ui.button.tup.icon
+						%i.arrow.up.icon
+					%button.ui.button.tdown.icon
+						%i.arrow.down.icon
+					%button.ui.button.trotateleft.icon ↻
+					%button.ui.button.trotateright.icon ↺
+					%button.ui.button.treset.icon reset
+
+		#controls
+#right-panel.panel
+	#user-profile.ui.segment.yellow
+		.ui.dropdown.fluid.selection#user-select
+			.text
+				%img.ui.avatar.massive.image
+				Jenny Hess
+			%i.dropdown.icon
+			.menu
+				.item.hidden.template
+					%img.ui.avatar.massive.image
+					%b.user Jenny Hess
+					(
+					%span.age
+					yo )
+					%span.hours_programming_per_week
+					hr/wk
+					%span.years_programming
+					yr exp.
+					[
+					%span.overall_rating
+					]
+		%br
+		.content.ui.container
+
+			.ui.statistics.mini
+				.statistic
+					.value.age
+					.label AGE
+				.statistic
+					.value.years_programming
+					.label YR EXP
+				.statistic
+					.value.hours_programming_per_week
+					.label HR/WK
+
+			%table.table.ui.table.fluid.collapsing.striped.very.compact
+				%tr
+					%td Background
+					%td{colspan: 3}
+						.ui.mini.horizontal.divided.list
+							.item
+								.content.education
+							.item
+								.content.industry_experience
+				%tr
+					%td Overall Rating
+					%td
+						.ui.star.rating.overall_rating{"data-rating":"3"}
+					%td Programmed Normally
+					%td
+						.ui.star.rating.programmed_normally{"data-rating":"3"}
+				%tr
+					%td Wristband Comfort
+					%td
+						.ui.star.rating.affected_by_wristband{"data-rating":"3"}
+					%td Average Comfort
+					%td
+						.ui.star.rating.average_comfort{"data-rating":"3"}
+				%tr
+					%td Programming Background
+					%td{colspan: 3}
+						.ui.mini.horizontal.divided.list.programming_background_and_style
+							.item.template.hidden
+								.content.value
+				%tr
+					%td Familiar Languages
+					%td{colspan: 3}
+						.ui.mini.horizontal.divided.list.languages
+							.item.template.hidden
+								.content.value
+				%tr
+					%td Familiar Concepts
+					%td{colspan: 3}
+						.ui.mini.horizontal.divided.list.concepts
+							.item.template.hidden
+								.content.value
+				%tr
+					%td Domains
+					%td{colspan: 3}
+						.ui.mini.horizontal.divided.list.domains
+							.item.template.hidden
+								.content.value
+
+
+
+
+	#bio-data.ui.segment.blue
+		.type bio data
+		.plot
+			.plottitle PHASIC
+			.plotarea.paper-plot{src: "/irb/111/phasic_111.json"}
+		.plot
+			.plottitle HR
+			.plotarea.paper-plot{src: "/irb/111/hr_111.json"}
+		
+
+	#jupyter-data.ui.segment.red
+		.type Jupyter
+		.plot
+			.plottitle EXECUTE
+			.plotarea.paper-plot{src: "/irb/111/execute_111.json"}
+		.plot
+			.plottitle MOUSE
+			.plotarea.paper-plot{src: "/irb/111/mouseevent_111.json"}
+		.plot
+			.plottitle SAVE
+			.plotarea.paper-plot{src: "/irb/111/notebooksaved_111.json"}
+		.plot
+			.plottitle SELECT
+			.plotarea.paper-plot{src: "/irb/111/select_111.json"}
+		.plot
+			.plottitle TYPING
+			.plotarea.paper-plot{src: "/irb/111/textchunk_111.json"}
+		
+	
+	#kinnunen-data.ui.segment.purple
+		.type Kinnunen
+		.plot
+			.plottitle GETTINGSTARTED
+			.plotarea.paper-plot{src: "/irb/111/getting-started_111.json"}
+		.plot
+			.plottitle DEALINGWITHDIFFICULTIES
+			.plotarea.paper-plot{src: "/irb/111/dealing-with-difficulties_111.json"}
+		.plot
+			.plottitle ENCOUNTERINGDIFFICULTIES
+			.plotarea.paper-plot{src: "/irb/111/encountering-difficulties_111.json"}
+		.plot
+			.plottitle FAILING
+			.plotarea.paper-plot{src: "/irb/111/failing_111.json"}
+		.plot
+			.plottitle SUCCEDING
+			.plotarea.paper-plot{src: "/irb/111/succeeding_111.json"}
+		.plot
+			.plottitle SUBMITTING
+			.plotarea.paper-plot{src: "/irb/111/submitting_111.json"}
+		
+	#q-data.ui.segment.red
+		.type Task
+		.plot
+			.plottitle T1-PRINTLOOP
+			.plotarea.paper-plot{src: "/irb/111/q1_111.json", color: "red"}
+		.plot
+			.plottitle T2- DYNAMIC PROGRAMMING
+			.plotarea.paper-plot{src: "/irb/111/q2_111.json", color: "green"}
+		.plot
+			.plottitle T3 - STABLE SORT
+			.plotarea.paper-plot{src: "/irb/111/q3_111.json", color: "green"}
+		.plot
+			.plottitle T4 - TREE TRAVERSAL
+			.plotarea.paper-plot{src: "/irb/111/q4_111.json", color: "green"}
+
+	#notes-display.ui.segment.blue
+		%select.ui.fluid.dropdown
+		#notes.ui{"content-editable": true}
+			From retrospective think aloud
+
+:coffeescript
+	$ ->
+		window.getImage = (id, name)->
+			canvas = $('#view-'+id)[0]
+			canvas.toBlob (blob)->
+			    saveAs(blob, name+".png")
+
+		window.pm = new ProfileManager
+			onLoad: ()->
+				handlers ()->
+					window.ui = new UIManager()
+					window.plt = new PlotManager()
+					$(".paper-plot").trigger('load')
+				$('#'+111).click() # DEFAULT USER
+		$("#notes").on 'mousedown', (e)->
+			e.stopPropagation()

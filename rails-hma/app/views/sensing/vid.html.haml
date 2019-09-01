@@ -1,0 +1,67 @@
+:coffeescript
+  $ ->
+    $('.vid.button').click (e)->
+      file = "/videos/" + $(this).attr('name') 
+      $('video').attr('src', file)
+    $('#extract').click (e)->
+      content = $('textarea').val()
+      lines = content.split('\n')
+      snippets = _.map lines, (l)->
+        times = l.split(" ")
+        start = times[0]
+        end = times[1]
+       
+        row = $("<tr>")
+        play_cell = $('<td>')
+        
+        play_button = $('<button>').addClass("ui button red").html(start).attr
+            start: start
+            end: end
+          .click (e)->
+            s = parseFloat($(this).attr('start'))
+            e = parseFloat($(this).attr('end'))
+            vid = $('video')[0]
+            vid.currentTime = s
+            vid.play()
+
+        play_cell.append(play_button)
+        row.append(play_cell)
+        row
+      $('#table-contents').html(snippets)
+
+
+
+.ui.container
+  .ui.segment
+    .ui.horizontal.list
+      - @videos.each do |v|
+        .ui.item
+          .ui.vid.small.button{:name => v}
+            = v.split('.')[0]
+
+
+
+.ui.two.column.grid.container
+  .column
+    .ui.segment
+      .ui.video
+        %video.ui.centered{:controls => 'controls', :width => "620"}
+          Sorry, your browser doesn't support embedded videos.
+    .ui.form.segment
+      .ui.field
+        %textarea.ui
+      .ui.button.blue#extract
+        EXTRACT
+  .column
+    %table.ui.celled.padded.table
+      %thead
+        %tr
+          %th Snippet
+          %th EDA
+          %th BVP
+      %tbody#table-contents
+        
+:css
+  video{
+      width: 100%;
+  }

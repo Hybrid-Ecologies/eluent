@@ -1,0 +1,255 @@
+// Place all the styles related to the sensing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+ *= require jquery-ui
+ */
+
+html, body{
+	width: 100%;
+	height: 100%;
+	
+}
+.codes{
+	margin-top: 25px;
+}
+.cchar{
+	max-width: 30%;
+	&.full{
+		max-width: 100%;
+	}
+	img{
+		width: 100%;
+	}
+
+}
+.cgram{
+	max-width: 30%;
+	&.full{
+		max-width: 100%;
+	}
+	img{
+		width: 100%;
+	}
+
+}
+.cbook{
+	max-width: 30%;
+	&.full{
+		max-width: 100%;
+	}
+	img{
+		width: 100%;
+	}
+}
+.group{
+	display: flex;
+	justify-content: center;
+	flex-flow: wrap row;
+	align-items: center;
+	margin-top: 15px;
+
+}
+.codebar{
+	
+	width: 30px;
+	z-index: 100;
+	height: 100%;
+	background: white;
+	border: 1px solid white;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	
+}
+
+.ui.bar{
+	z-index: 10000;
+	position: absolute;
+	top: 0;
+	left: 4px;
+
+}
+.ui.dropdown.tiny{
+	height: 0.6em !important;
+	width: 1.5em;
+	font-size: 0.6em !important;
+	.item{
+		font-size: 0.8em !important;
+	}
+}
+
+.codeword{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	width: 100%;
+	height: 100%;
+}
+.codelabel{
+	font-size: 10px;
+}
+
+#codebook{
+	overflow: inherit;
+}
+.timeupdate{
+	background: #00A8E1 !important;
+
+}
+
+
+.centered{
+	text-align: center !important;
+}
+.segment{
+	overflow: hidden;
+}
+.plot{
+	margin-top: 0px;
+	.plotarea{}
+	.plottitle{
+		cursor: pointer !important;
+		display: inline;
+	    font-weight: bold;
+	    font-size: 0.6em;
+	    margin-left: 4px;
+	    z-index: 100;
+	    position: relative;
+	    background: rgba(255, 255, 255, 0.8);
+	    bottom: -19px;
+	}
+}
+
+.paper-plot{
+	canvas{
+		border: 1px solid #DFDFDF;
+		border-radius: 5px;
+		width: 100%;
+	}
+}
+#user-select{
+	height: 60px;
+	font-size: 1.4em;
+	& > .text{
+		top: 5px;
+	}
+}
+.panel{
+	overflow-y: scroll
+}
+#left-panel{
+	width: 60%;
+	height: 100%;
+	float: left;
+	padding: 10px;
+	background: #333;
+}
+.ui-resizable-helper { border: 2px dotted #00F; }
+#right-panel{
+	width: 40%;
+	height: 100%;
+	float: right;
+	padding: 10px;
+	background: #DDD;
+}
+h1, h2, h3{
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+h1{
+	border-top: 1px solid #333;
+	padding-top: 8px;
+}
+#notes{
+	width: 100%;
+	height: 400px !important;
+	# padding: 30px;
+	# background: white;
+	# font-family: "Avenir";
+	# font-size: 1.2 em;
+	# line-height: 1.2;
+	overflow-y: scroll !important;
+}
+
+.audio-btn{
+	display: none !important;
+}
+.segment .type{
+	width: 100%;
+	background: #DDD;
+	padding: 4px 8px;
+	position: relative;
+	top: 0;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Avenir';
+	font-weight: bold;
+}
+.video-display{
+	position: relative;
+	background: #111!important;
+}
+
+.video-display .ui.bar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 4px 8px;
+	width: 100%;
+	z-index: 100;
+	background: #DDD;
+	& >.left{
+		width: 80%;
+		float: left;
+	}
+	& >.right{
+		width: 20%;
+		float: right;
+		button{
+			float: right;
+		}
+	}
+}
+.video-display .ui.bar.bottom{
+	top: auto;
+	bottom: 5px;
+	width: 90%;
+	margin-left: 5%;
+	overflow: hidden;
+	#controls{
+		width: 100%;
+	}
+	.subcontrols{
+		width: 100%;
+	}
+}
+.stage{
+	margin-top: 46px;
+	width:100%;
+	position:relative;
+	overflow: hidden;
+
+}
+video{
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+#captions{
+		width: 100%;
+		text-align: center;
+		font-size: 2em;
+		padding: 1em;
+		background: #FDFDFD;
+}
+.hidden{
+	display:none!important;
+}

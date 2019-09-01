@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Eluent
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    - if params[:controller] != "application"
+      = stylesheet_link_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload'
+      = javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload'
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}
+
+  :coffeescript
+    window.ws = new WebStorage()
+  %body
+    = yield
+    .ui.page.dimmer.transition.hidden
+      .content
+        .ui.segment.inverted
+          .image
+            - image_tag "/thermopainting.png", {width: 300}
+          .ui.massive.text.loader Loading
+          
+
+
+          
+          
+      
+  
+  

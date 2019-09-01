@@ -1,0 +1,104 @@
+#video-container
+  .ui.image.centered
+    .ui.black.ribbon.label
+      Video
+    %video.centered{:controls => "", :width => "620"}
+      Sorry, your browser doesn't support embedded videos.
+.canvas-area
+  %canvas#markup
+
+:scss
+  $eggshell: #f5f4f0;
+  .session{
+    position: relative;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+  }
+  .session > .node { border: solid 1px #CACACA; }
+  .session > .node > .label{
+    background: #F5F5F5;
+  }
+  .session > .node > .panel > .node > .label{
+    font-size: 0.9em;
+    background: #e9e9e9;
+  }
+  .session > .node > .panel > .node > .panel .label{
+    font-size: 0.8em;
+    background: #C9C9C9;
+    text-transform: uppercase;
+  }
+  .node{
+    flex-grow: 1;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+  }
+  .panel.paper{
+    background: #FFF;
+    canvas{
+      border: 1px solid #F1F1F1;
+      max-height: 61px;
+    }
+  }
+
+  .panel{
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+  }
+  .label{
+    font-family: "Adobe Gothic Std";
+    text-align: center;
+    padding: 2px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+    width: 25px;
+    overflow: hidden;
+    span{
+      display: block;
+      transform: rotate(-90deg);
+    }
+  }
+  html, body{
+      width: 100%;
+      height: 100%;
+  }
+  .canvas-area{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0;
+      background: $eggshell;
+  }
+  #video-container{
+    padding: 0px;
+    position: absolute;
+  }
+  video{
+      min-height: 350px;
+      /* max-width: 300px; */
+  }
+  canvas#markup{
+      width: 100%;
+      height: 100%;
+  }
+  canvas#markup[resize]{
+    width: 100%;
+    height: 100%;
+  }
+  .hidden{
+      display:none !important;
+  }
