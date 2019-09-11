@@ -1,12 +1,10 @@
 # README
 
-=======
 # eluent
 A tool for conducting hybrid microgenetic analysis with sensor data. Eluent consists of a Python package for data analysis and processing and a Ruby web app interface for post-study qualitative analysis. Eluent accompanies our paper:
-> Cesar Torres, Matthew Jörke, Emily Hill, Eric Paulos. [Hybrid Microgenetic Analysis: Using Activity Codebooks toIdentify and Characterize Creative Process](link), *Creativity & Cognition 2019*. 
+> Cesar Torres, Matthew Jörke, Emily Hill, Eric Paulos. [Hybrid Microgenetic Analysis: Using Activity Codebooks toIdentify and Characterize Creative Process](http://www.paulos.net/papers/2019/cc2019.pdf), *Creativity & Cognition 2019*. 
 
 
-=======
 Each JSON file should be structured as
 ```
 {
@@ -38,9 +36,8 @@ mts.extract_samples(L, normalize=True)  # extract samples and perform per sample
 
 * Deployment instructions
 
-<<<<<<< HEAD
 * ...
-=======
+
 ```
 codebook = activity.Codebook(mts)
 ```
