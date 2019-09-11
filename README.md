@@ -1,4 +1,6 @@
-# README
+<p align='center'>
+    <img src="logo.png" alt="logo" width="300" height="375"/>
+</p>
 
 # eluent
 A tool for conducting hybrid microgenetic analysis with sensor data. Eluent consists of a Python package for data analysis and processing and a Ruby web app interface for post-study qualitative analysis. Eluent accompanies our paper:
